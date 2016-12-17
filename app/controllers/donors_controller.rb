@@ -2,6 +2,18 @@ class DonorsController < ApplicationController
  def new
  end
 
+ def verify
+ 	params = request.POST
+ 	if params.has_key?("mobile_number") && params.has_key?("password")
+ 		donor = Donor.exists?(:mobile_number => params[:mobile_number], :password => params[:password])
+ 		if (donor == true)
+ 			respond_to do |format|
+    		format.json { head :ok }
+		end
+	end
+  end
+ end
+
 # def index
 # 		@donors = Donor.all
 # 		respond_to do |format|
