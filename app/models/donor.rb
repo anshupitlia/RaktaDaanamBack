@@ -3,15 +3,14 @@ class Donor < ApplicationRecord
 
 def can_receive_from(donor)
 	donor_receiver_map = {
-	"ab+" => ["o-","o+","b-", "b+", "a-", "a+", "ab-", "ab+"],
-	"ab-" => ["o-", "b-", "a-", "a+"],
-	"a+"  => ["o-", "o+", "a-", "a+"],
-	"a-"  => ["o-", "a-"],
-	"b+"  => ["o-", "o+", "b-", "b+"],
-	"b-"  => ["o-", "b-"],
-	"o+"  => ["o-", "o+"],
-	"o-"  => ["o-"],
-
+	"AB+" => ["O-","O+","B-", "B+", "A-", "A+", "AB-", "AB+"],
+	"AB-" => ["O-", "B-", "A-", "A+"],
+	"A+"  => ["O-", "O+", "A-", "A+"],
+	"A-"  => ["O-", "A-"],
+	"B+"  => ["O-", "O+", "B-", "B+"],
+	"B-"  => ["O-", "B-"],
+	"O+"  => ["O-", "O+"],
+	"O-"  => ["O-"],
 }
 	return donor_receiver_map[self.blood_group].include?(donor.blood_group)
 end

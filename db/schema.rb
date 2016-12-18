@@ -10,11 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161217201817) do
+ActiveRecord::Schema.define(version: 20161217215843) do
 
   create_table "donors", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.integer  "mobile_number"
+    t.string   "mobile_number"
     t.string   "blood_group"
     t.date     "dob"
     t.string   "gender"
@@ -24,4 +24,14 @@ ActiveRecord::Schema.define(version: 20161217201817) do
     t.datetime "updated_at",         null: false
   end
 
+  create_table "locations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "donor_id"
+    t.float    "lat",        limit: 24
+    t.float    "lng",        limit: 24
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.index ["donor_id"], name: "index_locations_on_donor_id", using: :btree
+  end
+
+  add_foreign_key "locations", "donors"
 end
