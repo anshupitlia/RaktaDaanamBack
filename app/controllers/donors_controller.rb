@@ -47,7 +47,7 @@ private
   	eligible_donors = []
   	all_donors = Donor.all
   	all_donors.each do |donor|
-	 	if (current_receiver.can_receive_from(donor))
+	 	if (current_receiver.can_receive_from(donor) && donor.can_donate)
 	 		eligible_donors.push(donor)
 	 	end
 	end

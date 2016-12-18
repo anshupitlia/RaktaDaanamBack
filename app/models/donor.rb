@@ -1,3 +1,4 @@
+require 'date'
 class Donor < ApplicationRecord
 	has_one :location
 
@@ -14,6 +15,13 @@ def can_receive_from(donor)
 }
 	return donor_receiver_map[self.blood_group].include?(donor.blood_group)
 end
+
+def can_donate()
+	now = Date.today
+	fifty_six_days_ago = (now - 56)
+	return self.last_donation_date < fifty_six_days_ago
+end
+
 
 
 def as_json(options={})
