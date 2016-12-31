@@ -10,8 +10,9 @@ class DonorsController < ApplicationController
  		eligible_donors = get_eligible_donors(params[:blood_group])
  		proximity_donors = get_donors_in_the_radius(eligible_donors, params[:lat], params[:lng])
  	end
+    eventual_donors = {"donors" => proximity_donors}
  	respond_to do |format|
- 		format.json { render :json => proximity_donors.to_json }
+ 		format.json { render :json => eventual_donors.to_json }
  	end
  end
 
