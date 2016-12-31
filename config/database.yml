@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
+  adapter: mysql2
   url: <%= ENV['DATABASE_URL'] %>
   database: RaktaDaanamBack_production
   username: RaktaDaanamBack
