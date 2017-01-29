@@ -30,6 +30,7 @@ class DonorsController < ApplicationController
 
  def create
   @donor = Donor.new(donor_params)
+  @donor.build_location(location_params)
   if (@donor.save)
   	respond_to do |format|
     format.json { head :ok }
@@ -40,7 +41,11 @@ end
  
 private
   def donor_params
-    params.require(:donor).permit(:name, :mobile_number, :blood_group, :dob, :gender, :password, :last_donation_date, location: [:lat, :lng])
+    params.require(:donor).permit(:name, :mobile_number, :blood_group, :dob, :gender, :password, :last_donation_date)
+  end
+
+  def location_params
+    params.require(:location).permit(:lat, :lng)
   end
 
   def get_eligible_donors(blood_group)

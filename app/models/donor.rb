@@ -23,7 +23,6 @@ def can_donate()
 end
 
 
-
 def as_json(options={})
   options[:only] ||= [:name, :mobile_number, :blood_group]
   options[:methods] ||= [:latitude, :longitude]
