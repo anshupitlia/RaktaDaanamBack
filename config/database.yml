@@ -54,3 +54,11 @@ production:
   database: RaktaDaanamBack_production
   username: RaktaDaanamBack
   password: <%= ENV['RAKTADAANAMBACK_DATABASE_PASSWORD'] %>
+
+staging:
+  <<: *default
+  adapter: mysql2
+  url: <%= ENV['DATABASE_URL'] %>
+  database: RaktaDaanamBack_staging
+  username: RaktaDaanamBack
+  password: <%= ENV['RAKTADAANAMBACK_DATABASE_PASSWORD'] %>
