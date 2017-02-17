@@ -1,6 +1,6 @@
 require 'date'
 class Donor < ApplicationRecord
-	has_one :location
+	has_one :location, dependent: :destroy
 
 def can_receive_from(donor)
 	donor_receiver_map = {
