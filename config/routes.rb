@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 	#root 'donors#index'
+	get '/', to: 'static#index'
 	post '/donors', to: 'donors#create'
 	post '/verify', to: 'donors#verify'
 	post '/get_donors', to: 'donors#get_donors_list'
